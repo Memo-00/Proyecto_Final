@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip> // LIBRERIA NECESARIA PARA LA TABLA
 
 using namespace std;
 
@@ -21,15 +22,16 @@ void mostrarProductos() {
     }
 
     cout << "\n===== LISTA DE PRODUCTOS =====" << endl;
-    cout << "Nombre\t\tPrecio\t\tCantidad" << endl;
-    cout << "----------------------------------------" << endl;
+    // AQUI ESTA EL CAMBIO: Usamos setw para dar un ancho fijo a cada columna
+    cout << left << setw(20) << "Nombre" << setw(15) << "Precio" << setw(10) << "Cantidad" << endl;
+    cout << "---------------------------------------------" << endl;
 
     for (int i = 0; i < cantidadActual; i++) {
-        cout << inventario[i].nombre << "\t\t";
-        cout << inventario[i].precio << "\t\t";
-        cout << inventario[i].cantidad << endl;
+        cout << left << setw(20) << inventario[i].nombre; // 20 espacios para nombre
+        cout << left << setw(15) << inventario[i].precio; // 15 espacios para precio
+        cout << left << setw(10) << inventario[i].cantidad << endl; // 10 para cantidad
     }
-    cout << "----------------------------------------" << endl;
+    cout << "---------------------------------------------" << endl;
 }
 
 void ordenarProductosBurbuja() {
@@ -52,14 +54,15 @@ void ordenarProductosBurbuja() {
     }
     
     cout << "Productos ordenados por precio (Burbuja)." << endl;
-    cout << "Nombre\t\tPrecio\t\tCantidad" << endl;
-    cout << "----------------------------------------" << endl;
+    // APLICAMOS EL MISMO FORMATO DE TABLA AQUI
+    cout << left << setw(20) << "Nombre" << setw(15) << "Precio" << setw(10) << "Cantidad" << endl;
+    cout << "---------------------------------------------" << endl;
     for (int i = 0; i < cantidadActual; i++) {
-        cout << copia[i].nombre << "\t\t";
-        cout << copia[i].precio << "\t\t";
-        cout << copia[i].cantidad << endl;
+        cout << left << setw(20) << copia[i].nombre;
+        cout << left << setw(15) << copia[i].precio;
+        cout << left << setw(10) << copia[i].cantidad << endl;
     }
-    cout << "----------------------------------------" << endl;
+    cout << "---------------------------------------------" << endl;
 }
 
 void ordenarProductosSeleccion() {
@@ -85,14 +88,15 @@ void ordenarProductosSeleccion() {
     }
     
     cout << "Productos ordenados por precio (Seleccion)." << endl;
-    cout << "Nombre\t\tPrecio\t\tCantidad" << endl;
-    cout << "----------------------------------------" << endl;
+    // APLICAMOS EL MISMO FORMATO DE TABLA AQUI
+    cout << left << setw(20) << "Nombre" << setw(15) << "Precio" << setw(10) << "Cantidad" << endl;
+    cout << "---------------------------------------------" << endl;
     for (int i = 0; i < cantidadActual; i++) {
-        cout << copia[i].nombre << "\t\t";
-        cout << copia[i].precio << "\t\t";
-        cout << copia[i].cantidad << endl;
+        cout << left << setw(20) << copia[i].nombre;
+        cout << left << setw(15) << copia[i].precio;
+        cout << left << setw(10) << copia[i].cantidad << endl;
     }
-    cout << "----------------------------------------" << endl;
+    cout << "---------------------------------------------" << endl;
 }
 
 void ordenarProductosInsercion() {
@@ -114,14 +118,15 @@ void ordenarProductosInsercion() {
     }
     
     cout << "Productos ordenados por precio (Insercion)." << endl;
-    cout << "Nombre\t\tPrecio\t\tCantidad" << endl;
-    cout << "----------------------------------------" << endl;
+    // APLICAMOS EL MISMO FORMATO DE TABLA AQUI
+    cout << left << setw(20) << "Nombre" << setw(15) << "Precio" << setw(10) << "Cantidad" << endl;
+    cout << "---------------------------------------------" << endl;
     for (int i = 0; i < cantidadActual; i++) {
-        cout << copia[i].nombre << "\t\t";
-        cout << copia[i].precio << "\t\t";
-        cout << copia[i].cantidad << endl;
+        cout << left << setw(20) << copia[i].nombre;
+        cout << left << setw(15) << copia[i].precio;
+        cout << left << setw(10) << copia[i].cantidad << endl;
     }
-    cout << "----------------------------------------" << endl;
+    cout << "---------------------------------------------" << endl;
 }
 
 void menuOrdenar() {
