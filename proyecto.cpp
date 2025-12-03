@@ -32,52 +32,96 @@ void mostrarProductos() {
     cout << "----------------------------------------" << endl;
 }
 
-
 void ordenarProductosBurbuja() {
+    if (cantidadActual == 0) return;
+
+    Producto copia[MAX];
+    for (int i = 0; i < cantidadActual; i++) {
+        copia[i] = inventario[i];
+    }
+
     Producto aux;
     for (int i = 0; i < cantidadActual - 1; i++) {
         for (int j = 0; j < cantidadActual - 1 - i; j++) {
-            if (inventario[j].precio > inventario[j + 1].precio) {
-                aux = inventario[j];
-                inventario[j] = inventario[j + 1];
-                inventario[j + 1] = aux;
+            if (copia[j].precio > copia[j + 1].precio) {
+                aux = copia[j];
+                copia[j] = copia[j + 1];
+                copia[j + 1] = aux;
             }
         }
     }
-    cout << "Productos ordenados por precio ." << endl;
-    mostrarProductos();
+    
+    cout << "Productos ordenados por precio (Burbuja)." << endl;
+    cout << "Nombre\t\tPrecio\t\tCantidad" << endl;
+    cout << "----------------------------------------" << endl;
+    for (int i = 0; i < cantidadActual; i++) {
+        cout << copia[i].nombre << "\t\t";
+        cout << copia[i].precio << "\t\t";
+        cout << copia[i].cantidad << endl;
+    }
+    cout << "----------------------------------------" << endl;
 }
 
 void ordenarProductosSeleccion() {
+    if (cantidadActual == 0) return;
+
+    Producto copia[MAX];
+    for (int i = 0; i < cantidadActual; i++) {
+        copia[i] = inventario[i];
+    }
+
     for (int i = 0; i < cantidadActual - 1; i++) {
         int indiceMenor = i;
         for (int j = i + 1; j < cantidadActual; j++) {
-            if (inventario[j].precio < inventario[indiceMenor].precio) {
+            if (copia[j].precio < copia[indiceMenor].precio) {
                 indiceMenor = j;
             }
         }
         if (indiceMenor != i) {
-            Producto aux = inventario[i];
-            inventario[i] = inventario[indiceMenor];
-            inventario[indiceMenor] = aux;
+            Producto aux = copia[i];
+            copia[i] = copia[indiceMenor];
+            copia[indiceMenor] = aux;
         }
     }
-    cout << "Productos ordenados por precio." << endl;
-    mostrarProductos();
+    
+    cout << "Productos ordenados por precio (Seleccion)." << endl;
+    cout << "Nombre\t\tPrecio\t\tCantidad" << endl;
+    cout << "----------------------------------------" << endl;
+    for (int i = 0; i < cantidadActual; i++) {
+        cout << copia[i].nombre << "\t\t";
+        cout << copia[i].precio << "\t\t";
+        cout << copia[i].cantidad << endl;
+    }
+    cout << "----------------------------------------" << endl;
 }
 
 void ordenarProductosInsercion() {
+    if (cantidadActual == 0) return;
+
+    Producto copia[MAX];
+    for (int i = 0; i < cantidadActual; i++) {
+        copia[i] = inventario[i];
+    }
+
     for (int i = 1; i < cantidadActual; i++) {
-        Producto aux = inventario[i];
+        Producto aux = copia[i];
         int j = i - 1;
-        while (j >= 0 && inventario[j].precio > aux.precio) {
-            inventario[j + 1] = inventario[j];
+        while (j >= 0 && copia[j].precio > aux.precio) {
+            copia[j + 1] = copia[j];
             j--;
         }
-        inventario[j + 1] = aux;
+        copia[j + 1] = aux;
     }
-    cout << "Productos ordenados por precio ." << endl;
-    mostrarProductos();
+    
+    cout << "Productos ordenados por precio (Insercion)." << endl;
+    cout << "Nombre\t\tPrecio\t\tCantidad" << endl;
+    cout << "----------------------------------------" << endl;
+    for (int i = 0; i < cantidadActual; i++) {
+        cout << copia[i].nombre << "\t\t";
+        cout << copia[i].precio << "\t\t";
+        cout << copia[i].cantidad << endl;
+    }
+    cout << "----------------------------------------" << endl;
 }
 
 void menuOrdenar() {
@@ -101,7 +145,6 @@ void menuOrdenar() {
         default: cout << "Metodo no valido." << endl;
     }
 }
-
 
 void registrarProductos() { 
     int n;
